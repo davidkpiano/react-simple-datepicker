@@ -1,19 +1,19 @@
-import React from 'react';
+import React from 'react/addons';
 import moment from 'moment';
 
+import Header from '../header/component';
 import Month from '../month/component';
+
+const {CSSTransitionGroup} = React.addons;
 
 export default class Calendar extends React.Component {
   render() {
     return (
       <section className="sd-calendar">
-        <header className="sd-header">
-          <button className="sd-button" onClick={this.props.updateMonth.bind(this, this.props.month - 1)}>&laquo;</button>
-            <h3 className="sd-heading">{moment().month(this.props.month).format('MMMM')} {this.props.year}</h3>
-          <button className="sd-button" onClick={this.props.updateMonth.bind(this, this.props.month + 1)}>&raquo;</button>
-        </header>
-
-        <Month {...this.props} />
+        <Header {...this.props} />
+        <CSSTransitionGroup transitionName="month">
+          <Month {...this.props} key={this.props.month}/>
+        </CSSTransitionGroup>
       </section>
     )
   }

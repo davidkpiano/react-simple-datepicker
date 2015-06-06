@@ -9,21 +9,6 @@ body {
   box-sizing: border-box;
   position: relative; }
 
-.sd-calendar {
-  width: 14rem;
-  background: #2982d9;
-  color: white;
-  transition: all 0.25s ease-in-out; }
-  .sd-calendar.calendar-enter {
-    opacity: 0;
-    transform: translateY(1rem); }
-  .sd-calendar.calendar-enter-active {
-    opacity: 1;
-    transform: translateY(0); }
-  .sd-calendar.calendar-leave-active {
-    opacity: 0;
-    transform: translateY(1rem); }
-
 .sd-header {
   display: flex;
   flex-direction: row;
@@ -50,37 +35,65 @@ body {
     .sd-header > .sd-button:hover {
       background: rgba(255, 255, 255, 0.4); }
 
+.sd-calendar {
+  width: 14rem;
+  background: #2982d9;
+  color: white;
+  transition: all 0.25s ease-in-out;
+  overflow: hidden; }
+  .sd-calendar.calendar-enter {
+    opacity: 0;
+    transform: translateY(1rem); }
+  .sd-calendar.calendar-enter-active {
+    opacity: 1;
+    transform: translateY(0); }
+  .sd-calendar.calendar-leave-active {
+    opacity: 0;
+    transform: translateY(1rem); }
+
 .sd-month {
   width: 14rem;
   height: auto;
   background-color: #2982d9;
   color: white;
-  padding: 1rem; }
+  padding: 1rem;
+  transition: all 0.25s ease-in-out; }
   .sd-month:before, .sd-month:after {
     content: " ";
     display: table; }
   .sd-month:after {
     clear: both; }
-
-.sd-days {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  padding: 0.5rem 0;
-  opacity: 0.5; }
-  .sd-days:before, .sd-days:after {
-    content: " ";
-    display: table; }
-  .sd-days:after {
-    clear: both; }
-
-.sd-day {
-  width: 14.28571%;
-  display: inline-block;
-  float: left;
-  font-size: 0.563rem;
-  text-align: center;
-  text-transform: uppercase; }
+  .sd-month.month-enter {
+    opacity: 0;
+    transform: translateX(-1rem); }
+  .sd-month.month-enter-active {
+    opacity: 1;
+    transform: translateY(0); }
+  .sd-month.month-leave {
+    position: absolute;
+    top: 0;
+    left: 0; }
+  .sd-month.month-leave-active {
+    opacity: 0;
+    transform: translateX(1rem); }
+  .sd-month .sd-days {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    padding: 0.5rem 0;
+    opacity: 0.5; }
+    .sd-month .sd-days:before, .sd-month .sd-days:after {
+      content: " ";
+      display: table; }
+    .sd-month .sd-days:after {
+      clear: both; }
+  .sd-month .sd-day {
+    width: 14.28571%;
+    display: inline-block;
+    float: left;
+    font-size: 0.563rem;
+    text-align: center;
+    text-transform: uppercase; }
 
 .sd-date {
   width: 14.28571%;

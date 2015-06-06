@@ -150,8 +150,6 @@
 	        updateDate: this._updateDate.bind(this),
 	        key: '1' }) : null;
 
-	      console.log(calendar);
-
 	      return React.createElement(
 	        'div',
 	        { className: 'sd-datepicker' },
@@ -26352,6 +26350,8 @@
 	  value: true
 	});
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -26360,17 +26360,23 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
 
-	var _react = __webpack_require__(2);
+	var _reactAddons = __webpack_require__(248);
 
-	var _react2 = _interopRequireDefault(_react);
+	var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
 	var _moment = __webpack_require__(158);
 
 	var _moment2 = _interopRequireDefault(_moment);
 
+	var _headerComponent = __webpack_require__(266);
+
+	var _headerComponent2 = _interopRequireDefault(_headerComponent);
+
 	var _monthComponent = __webpack_require__(247);
 
 	var _monthComponent2 = _interopRequireDefault(_monthComponent);
+
+	var CSSTransitionGroup = _reactAddons2['default'].addons.CSSTransitionGroup;
 
 	var Calendar = (function (_React$Component) {
 	  function Calendar() {
@@ -26386,37 +26392,21 @@
 	  _createClass(Calendar, [{
 	    key: 'render',
 	    value: function render() {
-	      return _react2['default'].createElement(
+	      return _reactAddons2['default'].createElement(
 	        'section',
 	        { className: 'sd-calendar' },
-	        _react2['default'].createElement(
-	          'header',
-	          { className: 'sd-header' },
-	          _react2['default'].createElement(
-	            'button',
-	            { className: 'sd-button', onClick: this.props.updateMonth.bind(this, this.props.month - 1) },
-	            '«'
-	          ),
-	          _react2['default'].createElement(
-	            'h3',
-	            { className: 'sd-heading' },
-	            (0, _moment2['default'])().month(this.props.month).format('MMMM'),
-	            ' ',
-	            this.props.year
-	          ),
-	          _react2['default'].createElement(
-	            'button',
-	            { className: 'sd-button', onClick: this.props.updateMonth.bind(this, this.props.month + 1) },
-	            '»'
-	          )
-	        ),
-	        _react2['default'].createElement(_monthComponent2['default'], this.props)
+	        _reactAddons2['default'].createElement(_headerComponent2['default'], this.props),
+	        _reactAddons2['default'].createElement(
+	          CSSTransitionGroup,
+	          { transitionName: 'month' },
+	          _reactAddons2['default'].createElement(_monthComponent2['default'], _extends({}, this.props, { key: this.props.month }))
+	        )
 	      );
 	    }
 	  }]);
 
 	  return Calendar;
-	})(_react2['default'].Component);
+	})(_reactAddons2['default'].Component);
 
 	exports['default'] = Calendar;
 	module.exports = exports['default'];
@@ -26431,6 +26421,8 @@
 	  value: true
 	});
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -26443,13 +26435,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _classnames = __webpack_require__(245);
+	var _dateComponent = __webpack_require__(267);
 
-	var _classnames2 = _interopRequireDefault(_classnames);
-
-	var _moment = __webpack_require__(158);
-
-	var _moment2 = _interopRequireDefault(_moment);
+	var _dateComponent2 = _interopRequireDefault(_dateComponent);
 
 	var Month = (function (_React$Component) {
 	  function Month() {
@@ -26509,20 +26497,8 @@
 	            'Sat'
 	          )
 	        ),
-	        this.props.dates.map(function (date, i) {
-	          var isCurrent = date.month() === _this.props.month;
-
-	          var classes = (0, _classnames2['default'])('sd-date', {
-	            'current': date.month() === _this.props.month,
-	            'future': date.month() > _this.props.month,
-	            'past': date.month() < _this.props.month
-	          });
-
-	          return _react2['default'].createElement(
-	            'div',
-	            { className: classes, key: date, onClick: _this.props.updateDate.bind(_this, date) },
-	            date.date()
-	          );
+	        this.props.dates.map(function (date) {
+	          return _react2['default'].createElement(_dateComponent2['default'], _extends({ date: date }, _this.props));
 	        })
 	      );
 	    }
@@ -28429,6 +28405,143 @@
 	}
 
 	module.exports = ReactTestUtils;
+
+/***/ },
+/* 266 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _moment = __webpack_require__(158);
+
+	var _moment2 = _interopRequireDefault(_moment);
+
+	var Header = (function (_React$Component) {
+	  function Header() {
+	    _classCallCheck(this, Header);
+
+	    if (_React$Component != null) {
+	      _React$Component.apply(this, arguments);
+	    }
+	  }
+
+	  _inherits(Header, _React$Component);
+
+	  _createClass(Header, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'header',
+	        { className: 'sd-header' },
+	        _react2['default'].createElement(
+	          'button',
+	          { className: 'sd-button', onClick: this.props.updateMonth.bind(this, this.props.month - 1) },
+	          '«'
+	        ),
+	        _react2['default'].createElement(
+	          'h3',
+	          { className: 'sd-heading' },
+	          (0, _moment2['default'])().month(this.props.month).format('MMMM'),
+	          ' ',
+	          this.props.year
+	        ),
+	        _react2['default'].createElement(
+	          'button',
+	          { className: 'sd-button', onClick: this.props.updateMonth.bind(this, this.props.month + 1) },
+	          '»'
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Header;
+	})(_react2['default'].Component);
+
+	exports['default'] = Header;
+	module.exports = exports['default'];
+
+/***/ },
+/* 267 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _moment = __webpack_require__(158);
+
+	var _moment2 = _interopRequireDefault(_moment);
+
+	var _classnames = __webpack_require__(245);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var Date = (function (_React$Component) {
+	  function Date() {
+	    _classCallCheck(this, Date);
+
+	    if (_React$Component != null) {
+	      _React$Component.apply(this, arguments);
+	    }
+	  }
+
+	  _inherits(Date, _React$Component);
+
+	  _createClass(Date, [{
+	    key: 'render',
+	    value: function render() {
+	      var date = this.props.date;
+	      var isCurrent = date.month() === this.props.month;
+
+	      var classes = (0, _classnames2['default'])('sd-date', {
+	        'current': date.month() === this.props.month,
+	        'future': date.month() > this.props.month,
+	        'past': date.month() < this.props.month
+	      });
+
+	      return _react2['default'].createElement(
+	        'div',
+	        { className: classes, key: date, onClick: this.props.updateDate.bind(this, date) },
+	        date.date()
+	      );
+	    }
+	  }]);
+
+	  return Date;
+	})(_react2['default'].Component);
+
+	exports['default'] = Date;
+	module.exports = exports['default'];
 
 /***/ }
 /******/ ]);

@@ -59,8 +59,6 @@ export default class Datepicker extends React.Component {
         key="1"/>
       ) : null;
 
-    console.log(calendar);
-
     return (
       <div className="sd-datepicker">
         <input className="sd-input"

@@ -29,6 +29,8 @@ body {
   position: relative;
 }
 
+@import 'header/component';
 @import 'calendar/component';
 @import 'datepicker/component';
 @import 'month/component';
+@import 'date/component';

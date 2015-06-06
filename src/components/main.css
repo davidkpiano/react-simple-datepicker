@@ -12,12 +12,22 @@ body {
 .sd-calendar {
   width: 14rem;
   background: #2982d9;
-  color: white; }
+  color: white;
+  transition: all 0.25s ease-in-out; }
+  .sd-calendar.calendar-enter {
+    opacity: 0;
+    transform: translateY(1rem); }
+  .sd-calendar.calendar-enter-active {
+    opacity: 1;
+    transform: translateY(0); }
+  .sd-calendar.calendar-leave-active {
+    opacity: 0;
+    transform: translateY(1rem); }
 
 .sd-header {
   display: flex;
   flex-direction: row;
-  padding: 0.5rem 0;
+  padding: 0.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
   .sd-header > .sd-heading {
     flex-grow: 1;
@@ -33,9 +43,12 @@ body {
     border: none;
     color: currentcolor;
     font-size: 1rem;
-    padding: 0 1rem; }
+    padding: 0 1rem;
+    border-radius: 0.25rem; }
     .sd-header > .sd-button:focus {
       outline: none; }
+    .sd-header > .sd-button:hover {
+      background: rgba(255, 255, 255, 0.4); }
 
 .sd-month {
   width: 14rem;

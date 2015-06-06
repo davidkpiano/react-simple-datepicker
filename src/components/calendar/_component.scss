@@ -4,12 +4,28 @@
   width: 14rem;
   background: map-get($colors, primary);
   color: white;
+  transition: all 0.25s ease-in-out;
+
+  &.calendar-enter {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+
+  &.calendar-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &.calendar-leave-active {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
 }
 
 .sd-header {
   display: flex;
   flex-direction: row;
-  padding: 0.5rem 0;
+  padding: 0.5rem;
   border-bottom: 1px solid rgba(white, 0.2);
 
   > .sd-heading {
@@ -29,9 +45,14 @@
     color: currentcolor;
     font-size: 1rem;
     padding: 0 1rem;
+    border-radius: 0.25rem;
 
     &:focus {
       outline: none;
+    }
+
+    &:hover {
+      background: rgba(white, 0.4);
     }
   }
 }

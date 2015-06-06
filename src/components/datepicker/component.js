@@ -1,6 +1,8 @@
-const React = require('react');
+const React = require('react/addons');
 const moment = require('moment');
 const _ = require('lodash');
+
+const {CSSTransitionGroup} = React.addons;
 
 import Calendar from '../calendar/component';
 
@@ -48,11 +50,16 @@ export default class Datepicker extends React.Component {
   }
 
   render() {
-    let calendar = <Calendar month={this.state.month}
-      year={this.state.year}
-      dates={this.state.dates}
-      updateMonth={this._updateMonth.bind(this)}
-      updateDate={this._updateDate.bind(this)}/>;
+    let calendar = this.state.open ? (
+      <Calendar month={this.state.month}
+        year={this.state.year}
+        dates={this.state.dates}
+        updateMonth={this._updateMonth.bind(this)}
+        updateDate={this._updateDate.bind(this)}
+        key="1"/>
+      ) : null;
+
+    console.log(calendar);
 
     return (
       <div className="sd-datepicker">
@@ -62,7 +69,10 @@ export default class Datepicker extends React.Component {
           readOnly
           onClick={this._open.bind(this)}/>
 
-        {this.state.open && calendar}
+
+        <CSSTransitionGroup transitionName="calendar">
+          {calendar}
+        </CSSTransitionGroup>
       </div>
     );
   }

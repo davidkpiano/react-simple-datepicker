@@ -45,6 +45,10 @@ export default class Datepicker extends React.Component {
     this.setState({ date, open: false });
   }
 
+  _updateYear(year) {
+    this.setState({ year });
+  }
+
   _open() {
     this.setState({ open: true });
   }

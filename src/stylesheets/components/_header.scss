@@ -1,0 +1,36 @@
+
+
+.sd-header {
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem;
+  border-bottom: 1px solid rgba(white, 0.2);
+
+  > .sd-heading {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 0.75rem;
+    margin: 0;
+    padding: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  > .sd-button {
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    border: none;
+    color: currentcolor;
+    font-size: 1rem;
+    padding: 0 1rem;
+    border-radius: 0.25rem;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      background: rgba(white, 0.4);
+    }
+  }    
+}

@@ -1,36 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
 
-$colors: (
-  primary: #2982d9
-);
-
-@mixin clearfix() {
-  &:before,
-  &:after {
-    content: " ";
-    display: table;
-  }
-
-  &:after {
-    clear: both;
-  }
-}
-
-html {
-  font-size: 16px;
-}
-
-body {
-  font-family: Lato, sans-serif;
-}
-
-*, *:before, *:after {
-  box-sizing: border-box;
-  position: relative;
-}
-
-@import 'header/component';
-@import 'calendar/component';
-@import 'datepicker/component';
-@import 'month/component';
-@import 'date/component';
+@import 'utils/all';
+@import 'base/all';
+@import 'components/all';

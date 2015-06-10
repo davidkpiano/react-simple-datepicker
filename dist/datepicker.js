@@ -136,6 +136,11 @@
 	      this.setState({ date: date, open: false });
 	    }
 	  }, {
+	    key: '_updateYear',
+	    value: function _updateYear(year) {
+	      this.setState({ year: year });
+	    }
+	  }, {
 	    key: '_open',
 	    value: function _open() {
 	      this.setState({ open: true });

@@ -1,11 +1,9 @@
 import React from 'react';
-import moment from 'moment';
 import classnames from 'classnames';
 
-export default class Date extends React.Component {
+export default class CalendarDate extends React.Component {
   render() {
     let date = this.props.date;
-    let isCurrent = date.month() === this.props.month;
 
     let classes = classnames('sd-date', {
       'current': date.month() === this.props.month,
@@ -13,6 +11,13 @@ export default class Date extends React.Component {
       'past': date.month() < this.props.month
     });
 
-    return <div className={classes} key={date} onClick={this.props.updateDate.bind(this, date)}>{date.date()}</div>
+    return (
+      <div
+        className={classes}
+        key={date}
+        onClick={this.props.updateDate.bind(this, date)}>
+        {date.date()}
+      </div>
+    );
   }
 }

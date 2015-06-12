@@ -1,12 +1,5 @@
-const React = require('react');
-const moment = require('moment');
-const _ = require('lodash');
-const classnames = require('classnames');
+import React from 'react';
 
-import Datepicker from './components/datepicker/component';
+import Datepicker from './components/datepicker';
 
-
-
-
-
-React.render(<Datepicker month="November"/>, document.getElementById('foo'))
+React.render(<Datepicker />, document.querySelector('.my-datepicker-component'));

@@ -4,7 +4,7 @@ const _ = require('lodash');
 
 const {CSSTransitionGroup} = React.addons;
 
-import Calendar from '../calendar/component';
+import Calendar from './calendar';
 
 export default class Datepicker extends React.Component {
   constructor(props) {

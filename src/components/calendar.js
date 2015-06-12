@@ -1,8 +1,8 @@
 import React from 'react/addons';
 import moment from 'moment';
 
-import Header from '../header/component';
-import Month from '../month/component';
+import Header from './header';
+import Month from './month';
 
 const {CSSTransitionGroup} = React.addons;
 

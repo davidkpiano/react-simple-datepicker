@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Date from '../date/component';
+import CalendarDate from './date';
 
 export default class Month extends React.Component {
   render() {
@@ -16,7 +16,7 @@ export default class Month extends React.Component {
           <li className="sd-day">Sat</li>
         </ul>
 
-        {this.props.dates.map((date) => (<Date date={date} {...this.props} />))}
+        {this.props.dates.map((date) => (<CalendarDate date={date} {...this.props} />))}
       </section>
     )
   }

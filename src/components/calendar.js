@@ -11,7 +11,7 @@ export default class Calendar extends React.Component {
     return (
       <section className="sd-calendar">
         <Header {...this.props} />
-        <CSSTransitionGroup transitionName="month">
+        <CSSTransitionGroup transitionName="month" component="div">
           <Month {...this.props} key={this.props.month}/>
         </CSSTransitionGroup>
       </section>

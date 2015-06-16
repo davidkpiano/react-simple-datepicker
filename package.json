@@ -4,6 +4,7 @@
   "description": "Simple datepicker for React.",
   "main": "index.js",
   "scripts": {
+    "start": "sass --watch src/stylesheets/main.scss:dist/stylesheets/main.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -29,7 +30,6 @@
     "webpack-dev-server": "^1.9.0"
   },
   "dependencies": {
-    "flux": "^2.0.3",
     "moment": "^2.10.3"
   }
 }

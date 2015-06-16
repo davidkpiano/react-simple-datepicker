@@ -23,22 +23,31 @@ export default class Datepicker extends React.Component {
   }
 
   _getDates(month, year) {
-    let dates = [];
-
     let firstDate = moment([year, month]).weekday(0);
 
-    for (let i = 0; i < 7 * 5; i++) {
-      let currentDate = firstDate.clone();
-      currentDate.add(i, 'd');
-
-      dates.push(currentDate);
-    }
+    let dates = _.range(42).map((val, index) => {
+      return firstDate.clone().add(index, 'd');
+    });
 
     return dates;
   }
 
   _updateMonth(month) {
-    this.setState({ month, dates: this._getDates(month, this.state.year) });
+    let year = this.state.year;
+
+    if (month >= 12) {
+      year++;
+      month %= 12;
+    } else if (month < 0) {
+      year--;
+      month = 12 + month;
+    }
+
+    this.setState({
+      month,
+      year,
+      dates: this._getDates(month, year)
+    });
   }
 
   _updateDate(date) {
@@ -60,7 +69,7 @@ export default class Datepicker extends React.Component {
         dates={this.state.dates}
         updateMonth={this._updateMonth.bind(this)}
         updateDate={this._updateDate.bind(this)}
-        key="1"/>
+        key="1" />
       ) : null;
 
     return (

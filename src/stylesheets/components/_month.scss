@@ -11,7 +11,7 @@
 
   &.month-enter {
     opacity: 0;
-    transform: translateX(-1rem);
+    transform: translateY(1rem);
   }
 
   &.month-enter-active {
@@ -23,11 +23,16 @@
     position: absolute;
     top: 0;
     left: 0;
+
+    + .sd-month {
+      position: absolute;
+    }
   }
 
   &.month-leave-active {
     opacity: 0;
-    transform: translateX(1rem);
+    z-index: -1;
+    transform: translateY(-1rem);
   }
 
   .sd-days {
